@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>EduManager</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" id="studentsNav">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="subjectsNav">
+                        <i class="fas fa-book"></i>
+                        <span>Subjects</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="gradesNav">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Grades</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="settingsNav">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header>
+                <div class="header-title" id="pageTitle">Student Management</div>
+                <div class="user-menu">
+                    <div class="user-avatar">John</div>
+                </div>
+            </header>
+
+            <main>
+                <!-- Students Section -->
+                <section id="studentsSection" class="section active">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Students</h2>
+                            <button id="addStudentBtn" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add Student
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="search-bar">
+                                <input type="text" id="studentSearch" placeholder="Search students...">
+                            </div>
+                            
+                            <div class="table-container">
+                                <table id="studentsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Student ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Subjects Section -->
+                <section id="subjectsSection" class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Subjects</h2>
+                            <button id="addSubjectBtn" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add Subject
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="search-bar">
+                                <input type="text" id="subjectSearch" placeholder="Search subjects...">
+                            </div>
+                            
+                            <div class="table-container">
+                                <table id="subjectsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Credits</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Grades Section -->
+                <section id="gradesSection" class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Grades</h2>
+                            <div class="filters">
+                                <select id="studentFilter">
+                                    <option value="">All Students</option>
+                                </select>
+                                <select id="subjectFilter">
+                                    <option value="">All Subjects</option>
+                                </select>
+                                <select id="gradeTypeFilter">
+                                    <option value="">All Types</option>
+                                    <option value="activity">Activities</option>
+                                    <option value="quiz">Quizzes</option>
+                                    <option value="exam">Exams</option>
+                                </select>
+                                <button id="addGradeBtn" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i> Add Grade
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table id="gradesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Subject</th>
+                                            <th>Type</th>
+                                            <th>Title</th>
+                                            <th>Score</th>
+                                            <th>Max Score</th>
+                                            <th>Percentage</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+
+                
+                <!-- Settings Section (New) -->
+                <section id="settingsSection" class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Settings</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label for="systemName">System Name</label>
+                                    <input type="text" id="systemName" value="EduManager">
+                                </div>
+                                <div class="form-group">
+                                    <label for="academicYear">Current Academic Year</label>
+                                    <input type="text" id="academicYear" value="2023-2024">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gradeScale">Grade Scale</label>
+                                    <select id="gradeScale">
+                                        <option value="percentage">Percentage</option>
+                                        <option value="gpa4">GPA (4.0)</option>
+                                        <option value="letter">Letter Grade</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary">Save Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Student Modal -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="studentModalTitle">Add Student</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label for="studentId">Student ID:</label>
+                    <input type="text" id="studentId" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth:</label>
+                        <input type="date" id="dateOfBirth" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelStudentBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Subject Modal -->
+    <div id="subjectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="subjectModalTitle">Add Subject</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="subjectForm">
+                <div class="form-group">
+                    <label for="subjectCode">Subject Code:</label>
+                    <input type="text" id="subjectCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="subjectName">Subject Name:</label>
+                    <input type="text" id="subjectName" required>
+                </div>
+                <div class="form-group">
+                    <label for="credits">Credits:</label>
+                    <input type="number" id="credits" min="1" max="6" value="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelSubjectBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Grade Modal -->
+    <div id="gradeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="gradeModalTitle">Add Grade</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="gradeForm">
+                <div class="form-group">
+                    <label for="gradeStudent">Student:</label>
+                    <select id="gradeStudent" required>
+                        <option value="">Select Student</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gradeSubject">Subject:</label>
+                    <select id="gradeSubject" required>
+                        <option value="">Select Subject</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gradeType">Grade Type:</label>
+                    <select id="gradeType" required>
+                        <option value="">Select Type</option>
+                        <option value="activity">Activity</option>
+                        <option value="quiz">Quiz</option>
+                        <option value="exam">Exam</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gradeTitle">Title:</label>
+                    <input type="text" id="gradeTitle" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="score">Score:</label>
+                        <input type="number" id="score" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxScore">Max Score:</label>
+                        <input type="number" id="maxScore" step="0.01" min="0" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelGradeBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

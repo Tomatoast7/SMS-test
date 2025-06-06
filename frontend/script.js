@@ -1,4 +1,11 @@
-const API_BASE_URL = "http://localhost:8000/api"
+let API_BASE_URL;
+
+if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+  API_BASE_URL = "http://localhost:8000/api";
+} else {
+  // Use your actual deployed Render URL here
+  API_BASE_URL = "https://sms-test-makigangay.onrender.com/api";
+}
 
 class StudentManagementSystem {
   constructor() {

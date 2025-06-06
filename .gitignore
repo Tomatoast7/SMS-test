@@ -26,3 +26,6 @@ local_settings.py
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Django staticfiles collected directory
+backend/staticfiles/
